@@ -1,11 +1,14 @@
 ---
-const personalImageAlt = "Josué Rivas"
+const personalImageAlt = 'Josué Rivas';
 
-import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
+/* Icons */
+import MailIcon from '@/components/icons/Mail.astro';
+import GitHubIcon from '@/components/icons/GitHub.astro';
+import LinkedInIcon from '@/components/icons/LinkedIn.astro';
 
+/* Components */
+import Badge from '@/components/Badge.astro';
+import SocialPill from '@/components/SocialPill.astro';
 ---
 
 <div class="max-w-xl">
@@ -32,10 +35,8 @@ import SocialPill from "@/components/SocialPill.astro"
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    +2 años de experiencia. <strong
-      >Desarrollador de Software</strong
-    > de San Salvador, El Salvador sv. Especializado en el desarrollo de aplicaciones web
-    únicas.
+    +2 años de experiencia. <strong>Desarrollador de Software</strong> de San Salvador,
+    El Salvador sv. Especializado en el desarrollo de aplicaciones web únicas.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:business.jrivas@gmail.com">
@@ -45,6 +46,10 @@ import SocialPill from "@/components/SocialPill.astro"
     <SocialPill href="https://linkedin.com/in/josué-rivas-396995214">
       <LinkedInIcon class="size-4" />
       LinkedIn
+    </SocialPill>
+    <SocialPill href="https://github.com/bluediu">
+      <GitHubIcon class="size-4" />
+      GitHub
     </SocialPill>
   </nav>
 </div>
