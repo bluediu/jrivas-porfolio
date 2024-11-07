@@ -1,0 +1,153 @@
+---
+/* Icons */
+import Check from './icons/Check.astro';
+
+interface IGroup {
+  name: string;
+  level: string;
+}
+
+export const fGroupOne: IGroup[] = [
+  {
+    name: 'HTML',
+    level: 'Avanzado',
+  },
+  {
+    name: 'CSS',
+    level: 'Avanzado',
+  },
+  {
+    name: 'JavaScript',
+    level: 'Avanzado',
+  },
+  {
+    name: 'TypeScript',
+    level: 'Avanzado',
+  },
+];
+
+export const fGroupTwo: IGroup[] = [
+  {
+    name: 'React',
+    level: 'Avanzado',
+  },
+  {
+    name: 'Git',
+    level: 'Intermedio',
+  },
+  {
+    name: 'Bootstrap',
+    level: 'Intermedio',
+  },
+];
+
+export const bGroupOne: IGroup[] = [
+  {
+    name: 'Python',
+    level: 'Avanzado',
+  },
+  {
+    name: 'Django',
+    level: 'Avanzado',
+  },
+  {
+    name: 'Node.js',
+    level: 'Avanzado',
+  },
+  {
+    name: 'Express.js',
+    level: 'Intermedio',
+  },
+];
+
+export const bGroupTwo: IGroup[] = [
+  {
+    name: 'PostgreSQL',
+    level: 'Intermedio',
+  },
+  {
+    name: 'MongoDB',
+    level: 'Básico',
+  },
+];
+---
+
+<section class="grid gap-y-16 md:grid-cols-2">
+  <article>
+    <h3 class="text-1xl font-bold text-center mb-6">Frontend Developer</h3>
+    <div class="grid gap-y-4 grid-cols-2">
+      <section>
+        {
+          fGroupOne.map(({ name, level }) => (
+            <article class="my-2 grid  grid-cols-2">
+              <div class="flex justify-end mr-3">
+                <Check />
+              </div>
+
+              <div class="flex flex-col justify-center">
+                <h4 class="font-medium">{name}</h4>
+                <span class="text-sm text-gray-500">{level}</span>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <section>
+        {
+          fGroupTwo.map(({ name, level }) => (
+            <article class="my-2 grid  grid-cols-2">
+              <div class="flex justify-end mr-3">
+                <Check />
+              </div>
+
+              <div class="flex flex-col justify-center">
+                <h4 class="font-medium">{name}</h4>
+                <span class="text-sm text-gray-500">{level}</span>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+    </div>
+  </article>
+
+  <article>
+    <h3 class="text-1xl font-bold text-center mb-6">Backend Developer</h3>
+    <div class="grid gap-y-4 grid-cols-2">
+      <section>
+        {
+          bGroupOne.map(({ name, level }) => (
+            <article class="my-2 grid  grid-cols-2">
+              <div class="flex justify-end mr-3">
+                <Check />
+              </div>
+
+              <div class="flex flex-col justify-center">
+                <h4 class="font-medium">{name}</h4>
+                <span class="text-sm text-gray-500">{level}</span>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <section>
+        {
+          bGroupTwo.map(({ name, level }) => (
+            <article class="my-2 grid  grid-cols-2">
+              <div class="flex justify-end mr-3">
+                <Check />
+              </div>
+
+              <div class="flex flex-col justify-center">
+                <h4 class="font-medium">{name}</h4>
+                <span class="text-sm text-gray-500">{level}</span>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+    </div>
+  </article>
+</section>

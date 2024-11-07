@@ -4,11 +4,13 @@ import Layout from '../layouts/Layout.astro';
 
 /* Icons */
 import CodeIcon from '@/components/icons/Code.astro';
+import SkillIcon from '@/components/icons/Skill.astro';
 import Briefcase from '@/components/icons/Briefcase.astro';
 
 /* Components */
 import Hero from '@/components/Hero.astro';
 import Projects from '@/components/Projects.astro';
+import Skills from '@/components/Skills.astro';
 import Experience from '@/components/Experience.astro';
 import TitleSection from '@/components/TitleSection.astro';
 import SectionContainer from '@/components/SectionContainer.astro';
@@ -39,6 +41,14 @@ import SectionContainer from '@/components/SectionContainer.astro';
         Proyectos
       </TitleSection>
       <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="habilidaes">
+      <TitleSection>
+        <SkillIcon class="size-7" />
+        Habilidades
+      </TitleSection>
+      <Skills />
     </SectionContainer>
   </div>
 </Layout>
