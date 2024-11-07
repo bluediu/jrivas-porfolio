@@ -6,11 +6,13 @@ import Layout from '../layouts/Layout.astro';
 import CodeIcon from '@/components/icons/Code.astro';
 import SkillIcon from '@/components/icons/Skill.astro';
 import Briefcase from '@/components/icons/Briefcase.astro';
+import ProfileCheck from '@/components/icons/ProfileCheck.astro';
 
 /* Components */
 import Hero from '@/components/Hero.astro';
-import Projects from '@/components/Projects.astro';
 import Skills from '@/components/Skills.astro';
+import AboutMe from '@/components/AboutMe.astro';
+import Projects from '@/components/Projects.astro';
 import Experience from '@/components/Experience.astro';
 import TitleSection from '@/components/TitleSection.astro';
 import SectionContainer from '@/components/SectionContainer.astro';
@@ -49,6 +51,14 @@ import SectionContainer from '@/components/SectionContainer.astro';
         Habilidades
       </TitleSection>
       <Skills />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <TitleSection>
+        <ProfileCheck class="size-8" />
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
     </SectionContainer>
   </div>
 </Layout>
