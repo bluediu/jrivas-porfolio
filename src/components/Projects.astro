@@ -1,0 +1,219 @@
+---
+/* Icons */
+import GitHub from './icons/GitHub.astro';
+import Node from './icons/tech/Node.astro';
+import React from './icons/tech/React.astro';
+import Django from './icons/tech/Django.astro';
+import Typescript from './icons/tech/Typescript.astro';
+
+/* Components */
+import Link from './icons/Link.astro';
+import LinkButton from './LinkButton.astro';
+
+const TAGS = {
+  DJANGO: {
+    name: 'Django',
+    class: 'bg-[#23272f] text-white',
+    icon: Django,
+  },
+  REACT: {
+    name: 'React.js',
+    class: 'bg-[#23272f] text-white',
+    icon: React,
+  },
+  TYPESCRIPT: {
+    name: 'TypeScript',
+    class: 'bg-[#23272f] text-white',
+    icon: Typescript,
+  },
+  NODE: {
+    name: 'Node.js',
+    class: 'bg-[#23272f] text-white',
+    icon: Node,
+  },
+};
+
+// https://svgl.app/?search=node
+const PROJECTS = [
+  {
+    title: 'BlueWave - Gestión de pedidos',
+    description:
+      'BlueWave es una aplicación cliente/admintrador que mejora las experiencias de los restaurantes al simplificar la gestión de pedidos para clientes y personal a través de modernas tecnologías web.',
+    link: 'https://github.com/bluediu/bluewave',
+    github: 'https://github.com/bluediu/bluewave',
+    preview:
+      'https://drive.google.com/file/d/1tUBKMrbAkuMcCWxenn-JDNz6rJI-OHSk/preview',
+    image: '/projects/bluewave-app.png',
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.DJANGO],
+  },
+  {
+    title: 'Calendario - Gestiona tus eventos',
+    description:
+      'Crea, visualiza y organiza tus eventos sin esfuerzo con un calendario intuitivo diseñado para simplificar la gestión de tu agenda.',
+    link: 'https://svgl.vercel.app/',
+    github: 'https://github.com/bluediu/calendar-app-frontent/',
+    preview: 'https://www.youtube.com/embed/HEMvsJTBweY?si=b51KztFteTwtNLAw',
+    image: '/projects/calendar-app.png',
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
+  },
+  {
+    title: 'Instaclone - Red Social',
+    description:
+      'Instaclone es una plataforma en la que los usuarios pueden compartir fotos, seguir a otros e interactuar con los contenidos a través de «me gusta» y comentarios.',
+    link: 'https://svgl.vercel.app/',
+    github: 'https://github.com/bluediu/instaclone-frontend',
+    preview: 'https://www.youtube.com/embed/HEMvsJTBweY?si=b51KztFteTwtNLAw',
+    image: '/projects/instaclone.png',
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
+  },
+];
+---
+
+<script>
+  let showModal = false;
+  let iframeWidth = 640;
+  let iframeHeight = 480;
+
+  function toggleModal(src: string) {
+    showModal = !showModal;
+    document
+      .querySelector('#projectModal')
+      ?.classList.toggle('hidden', !showModal);
+
+    if (src) {
+      // @ts-ignore
+      document.getElementById('video-frame')!.src = src;
+    } else {
+      // @ts-ignore
+      document.getElementById('video-frame')!.src = '';
+    }
+  }
+
+  function checkScreenSize() {
+    const iframe = document.getElementById('video-frame');
+
+    if (window.matchMedia('(max-width: 990px)').matches) {
+      iframeWidth = 320;
+      iframeHeight = 320;
+
+      // @ts-ignore
+      iframe!.width = iframeWidth;
+      // @ts-ignore
+      iframe!.height = iframeWidth;
+    } else {
+      iframeWidth = 560;
+      iframeHeight = 315;
+
+      // @ts-ignore
+      iframe!.width = iframeWidth;
+      // @ts-ignore
+      iframe!.height = iframeWidth;
+    }
+  }
+
+  // Check initial screen size
+  checkScreenSize();
+  // Update iframe size on window resize
+  window.addEventListener('resize', checkScreenSize);
+
+  // Cleanup event listener on component unmount
+  document.addEventListener('astro:unmount', () => {
+    window.removeEventListener('resize', checkScreenSize);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.show-modal-btn');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const videoSrc = button.getAttribute('data-src');
+        toggleModal(videoSrc!);
+      });
+    });
+  });
+</script>
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(
+      ({ image, title, description, tags, link, github, preview }) => (
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img
+                alt={title}
+                class="object-cover object-top w-full h-56 sm:h-full transition duration-500 md:scale-100 md:group-hover:scale-105"
+                loading="lazy"
+                src={image}
+              />
+            </div>
+          </div>
+
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-row mb-2 gap-x-2">
+                {tags.map((tag) => (
+                  <li>
+                    <span
+                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                    >
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-2 text-gray-700 dark:text-gray-400">
+                {description}
+              </div>
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <LinkButton href={github}>
+                    <GitHub class="size-6" />
+                    Code
+                  </LinkButton>
+                )}
+                {preview && (
+                  <button
+                    class="show-modal-btn inline-flex bg-gray-100 text-gray-800 border-gray-300 items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition dark:text-white dark:bg-gray-800 border dark:border-gray-600 focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800 hover:border-gray-900 group max-w-fit rounded-xl hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
+                    data-src={preview}
+                  >
+                    <Link class="size-4" />
+                    Preview
+                  </button>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      )
+    )
+  }
+
+  <!-- Modal -->
+  <section
+    id="projectModal"
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
+  >
+    <div class="relative bg-white dark:bg-gray-800 rounded-lg w-auto p-6">
+      <button
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 show-modal-btn"
+      >
+        ✖️
+      </button>
+      <h2 class="text-2xl font-bold mb-4">Project Details</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        <iframe
+          id="video-frame"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </p>
+    </div>
+  </section>
+</div>
