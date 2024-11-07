@@ -1,18 +1,44 @@
 ---
-import Layout from '../layouts/Layout.astro'
+/* Layouts */
+import Layout from '../layouts/Layout.astro';
 
-import SectionContainer from "@/components/SectionContainer.astro"
-import Hero from "@/components/Hero.astro"
+/* Icons */
+import CodeIcon from '@/components/icons/Code.astro';
+import Briefcase from '@/components/icons/Briefcase.astro';
+
+/* Components */
+import Hero from '@/components/Hero.astro';
+import Projects from '@/components/Projects.astro';
+import Experience from '@/components/Experience.astro';
+import TitleSection from '@/components/TitleSection.astro';
+import SectionContainer from '@/components/SectionContainer.astro';
 ---
 
-<Layout   
-	title="Josue Rivas - Desarrollador y Programador Web"
-	description='akakak'
+<Layout
+  title="Josue Rivas - Desarrollador y Programador Web"
+  description="akakak"
 >
-	<main class="px-4">
-		<SectionContainer class="py-16 md:py-36">
-			<Hero>
-      </slot>
-		</SectionContainer>
-	</main>
+  <main class="px-4">
+    <SectionContainer class="py-16 md:py-36">
+      <Hero />
+    </SectionContainer>
+  </main>
+
+  <div class="space-y-24">
+    <SectionContainer id="experiencia">
+      <TitleSection>
+        <Briefcase class="size-8" />
+        Experiencia laboral
+      </TitleSection>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <TitleSection>
+        <CodeIcon class="size-7" />
+        Proyectos
+      </TitleSection>
+      <Projects />
+    </SectionContainer>
+  </div>
 </Layout>
