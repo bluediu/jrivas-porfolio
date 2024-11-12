@@ -5,6 +5,7 @@ const personalImageAlt = 'Josué Rivas';
 import MailIcon from '@/components/icons/Mail.astro';
 import GitHubIcon from '@/components/icons/GitHub.astro';
 import LinkedInIcon from '@/components/icons/LinkedIn.astro';
+import DownloadIcon from '@/components/icons/Download.astro';
 
 /* Components */
 import Badge from '@/components/Badge.astro';
@@ -52,4 +53,12 @@ import SocialPill from '@/components/SocialPill.astro';
       GitHub
     </SocialPill>
   </nav>
+
+  <div
+    class="mt-6 inline-flex items-center justify-center gap-2 bg-first-color text-white px-6 py-4 rounded-lg shadow-button transition duration-300 hover:bg-first-color-alt cursor-pointer"
+    onclick="window.open('/josuerivas-cv-es.pdf')"
+  >
+    <span class="text-base">Descarga CV</span>
+    <DownloadIcon />
+  </div>
 </div>
