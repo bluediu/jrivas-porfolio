@@ -1,13 +1,14 @@
 ---
 /* Icons */
+import Link from './icons/Link.astro';
 import GitHub from './icons/GitHub.astro';
 import Node from './icons/tech/Node.astro';
+import Preview from './icons/Preview.astro';
 import React from './icons/tech/React.astro';
 import Django from './icons/tech/Django.astro';
 import Typescript from './icons/tech/Typescript.astro';
 
 /* Components */
-import Link from './icons/Link.astro';
 import LinkButton from './LinkButton.astro';
 
 const TAGS = {
@@ -39,7 +40,7 @@ const PROJECTS = [
     title: 'BlueWave - Gestión de pedidos',
     description:
       'BlueWave es una aplicación cliente/admintrador que mejora las experiencias de los restaurantes al simplificar la gestión de pedidos para clientes y personal a través de modernas tecnologías web.',
-    link: 'https://github.com/bluediu/bluewave',
+    link: '',
     github: 'https://github.com/bluediu/bluewave',
     preview:
       'https://drive.google.com/file/d/1tUBKMrbAkuMcCWxenn-JDNz6rJI-OHSk/preview',
@@ -52,7 +53,7 @@ const PROJECTS = [
       'Crea, visualiza y organiza tus eventos sin esfuerzo con un calendario intuitivo diseñado para simplificar la gestión de tu agenda.',
     link: 'https://svgl.vercel.app/',
     github: 'https://github.com/bluediu/calendar-app-frontent/',
-    preview: 'https://www.youtube.com/embed/HEMvsJTBweY?si=b51KztFteTwtNLAw',
+    preview: '',
     image: '/projects/calendar-app.png',
     tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
   },
@@ -60,9 +61,10 @@ const PROJECTS = [
     title: 'Instaclone - Red Social',
     description:
       'Instaclone es una plataforma en la que los usuarios pueden compartir fotos, seguir a otros e interactuar con los contenidos a través de «me gusta» y comentarios.',
-    link: 'https://svgl.vercel.app/',
+    link: '',
     github: 'https://github.com/bluediu/instaclone-frontend',
-    preview: 'https://www.youtube.com/embed/HEMvsJTBweY?si=b51KztFteTwtNLAw',
+    preview:
+      'https://drive.google.com/file/d/1_92WSuTxC5pI4U07hg64UWtMoKaAAuFr/preview',
     image: '/projects/instaclone.png',
     tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
   },
@@ -173,8 +175,14 @@ const PROJECTS = [
               <footer class="flex items-end justify-start mt-4 gap-x-4">
                 {github && (
                   <LinkButton href={github}>
-                    <GitHub class="size-6" />
+                    <GitHub class="size-5" />
                     Code
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={github}>
+                    <Link class="size-5" />
+                    Link
                   </LinkButton>
                 )}
                 {preview && (
@@ -182,7 +190,7 @@ const PROJECTS = [
                     class="show-modal-btn inline-flex bg-gray-100 text-gray-800 border-gray-300 items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition dark:text-white dark:bg-gray-800 border dark:border-gray-600 focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800 hover:border-gray-900 group max-w-fit rounded-xl hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
                     data-src={preview}
                   >
-                    <Link class="size-4" />
+                    <Preview class="size-5" />
                     Preview
                   </button>
                 )}
