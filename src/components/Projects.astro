@@ -51,9 +51,10 @@ const PROJECTS = [
     title: 'Calendario - Gestiona tus eventos',
     description:
       'Crea, visualiza y organiza tus eventos sin esfuerzo con un calendario intuitivo diseñado para simplificar la gestión de tu agenda.',
-    link: 'https://svgl.vercel.app/',
+    link: '',
     github: 'https://github.com/bluediu/calendar-app-frontent/',
-    preview: '',
+    preview:
+      'https://drive.google.com/file/d/1C3iL2GG4axK0hauUqCDLHIKF-ZwpUNXZ/preview',
     image: '/projects/calendar-app.png',
     tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
   },
@@ -66,7 +67,17 @@ const PROJECTS = [
     preview:
       'https://drive.google.com/file/d/1_92WSuTxC5pI4U07hg64UWtMoKaAAuFr/preview',
     image: '/projects/instaclone.png',
-    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.NODE],
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.DJANGO],
+  },
+  {
+    title: 'Pokédex - Explora y Conoce Pokémon',
+    description:
+      'Pokédex es una herramienta completa para descubrir información detallada sobre todos los Pokémon. Permite explorar sus tipos, habilidades, evoluciones y estadísticas para convertirte en un verdadero maestro Pokémon.',
+    link: 'https://pokemon-app-blue.vercel.app/',
+    github: 'https://github.com/bluediu/pokemon-app',
+    preview: '',
+    image: '/projects/pokedex.png',
+    tags: [TAGS.REACT, TAGS.TYPESCRIPT],
   },
 ];
 ---
@@ -180,7 +191,7 @@ const PROJECTS = [
                   </LinkButton>
                 )}
                 {link && (
-                  <LinkButton href={github}>
+                  <LinkButton href={link}>
                     <Link class="size-5" />
                     Link
                   </LinkButton>
