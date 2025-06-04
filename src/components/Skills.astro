@@ -10,64 +10,68 @@ interface IGroup {
 export const fGroupOne: IGroup[] = [
   {
     name: 'HTML',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'CSS',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'JavaScript',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'TypeScript',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
 ];
 
 export const fGroupTwo: IGroup[] = [
   {
     name: 'React',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'Git',
-    level: 'Intermedio',
+    level: 'Intermediate',
   },
   {
     name: 'Bootstrap',
-    level: 'Intermedio',
+    level: 'Advanced',
   },
 ];
 
 export const bGroupOne: IGroup[] = [
   {
     name: 'Python',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'Django',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'Node.js',
-    level: 'Avanzado',
+    level: 'Advanced',
   },
   {
     name: 'Express.js',
-    level: 'Intermedio',
+    level: 'Intermediate',
   },
 ];
 
 export const bGroupTwo: IGroup[] = [
   {
+    name: 'Nest.js',
+    level: 'Intermediate',
+  },
+  {
     name: 'PostgreSQL',
-    level: 'Intermedio',
+    level: 'Intermediate',
   },
   {
     name: 'MongoDB',
-    level: 'Básico',
+    level: 'Basic',
   },
 ];
 ---
@@ -80,7 +84,7 @@ export const bGroupTwo: IGroup[] = [
         {
           fGroupOne.map(({ name, level }) => (
             <article class="my-2 grid  grid-cols-2">
-              <div class="flex justify-end mr-3">
+              <div class="flex justify-end max-sm:justify-center mr-3">
                 <Check />
               </div>
 
@@ -97,7 +101,7 @@ export const bGroupTwo: IGroup[] = [
         {
           fGroupTwo.map(({ name, level }) => (
             <article class="my-2 grid  grid-cols-2">
-              <div class="flex justify-end mr-3">
+              <div class="flex justify-end max-sm:justify-center mr-3">
                 <Check />
               </div>
 
@@ -119,7 +123,7 @@ export const bGroupTwo: IGroup[] = [
         {
           bGroupOne.map(({ name, level }) => (
             <article class="my-2 grid  grid-cols-2">
-              <div class="flex justify-end mr-3">
+              <div class="flex justify-end max-sm:justify-center mr-3">
                 <Check />
               </div>
 
@@ -136,7 +140,7 @@ export const bGroupTwo: IGroup[] = [
         {
           bGroupTwo.map(({ name, level }) => (
             <article class="my-2 grid  grid-cols-2">
-              <div class="flex justify-end mr-3">
+              <div class="flex justify-end max-sm:justify-center mr-3">
                 <Check />
               </div>
 
