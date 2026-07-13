@@ -1,27 +1,35 @@
 ---
 import ExperienceItem from './ExperienceItem.astro';
+import { formatExperienceDate } from '../utils/dateUtils';
 
 const EXPERIENCE = [
   {
-    date: 'Jun 2025 - Present',
+    startDate: new Date(2025, 5, 1), // Jun 2025
+    endDate: null, // currently working here
     title: 'Full Stack Engineer',
     company: 'Stefanini Group',
     description:
-      'Designed and delivered scalable web solutions, collaborating with cross-functional teams to develop, maintain, and optimize applications while ensuring performance, reliability, and a high-quality user experience..',
+      'Designed and delivered scalable web solutions, collaborating with cross-functional teams to develop, maintain, and optimize applications while ensuring performance, reliability, and a high-quality user experience.',
   },
   {
-    date: 'Aug 2022 - Nov 2023',
+    startDate: new Date(2022, 7, 1), // Aug 2022
+    endDate: new Date(2023, 10, 1), // Nov 2023
     title: 'Full Stack Developer',
     company: 'DinamoData',
     description:
       'Responsible for developing complete software modules, from backend to frontend, incorporating performance optimizations.',
   },
 ];
+
+const experienceWithDates = EXPERIENCE.map((exp) => ({
+  ...exp,
+  date: formatExperienceDate(exp.startDate, exp.endDate),
+}));
 ---
 
 <ol class="relative mt-16">
   {
-    EXPERIENCE.map((experience) => (
+    experienceWithDates.map((experience) => (
       <li class="">
         <ExperienceItem {...experience} />
       </li>
