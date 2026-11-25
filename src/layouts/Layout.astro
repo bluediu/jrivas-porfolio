@@ -1,4 +1,5 @@
 ---
+/* @ts-ignore */
 import '@fontsource-variable/onest';
 
 import Header from '../components/Header.astro';
@@ -25,11 +26,24 @@ const { description, title } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="relative text-black dark:text-white">
+    <!-- Fondo animado -->
     <div
-      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      id="bg-animated"
+      transition:persist
+      class="fixed inset-0 z-[-2] overflow-hidden bg-gray-50 dark:bg-gray-950"
+      aria-hidden="true"
     >
+      <!-- Gradiente base (el que ya tenías) -->
+      <div
+        class="absolute inset-0
+        bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+        dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      ></div>
+
+      <!-- Blobs animados -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
 
     <Header />
@@ -66,6 +80,84 @@ const { description, title } = Astro.props;
         }
       }
 
+      /* ---------- Fondo animado ---------- */
+      .blob {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(90px);
+        opacity: 0.55;
+        will-change: transform;
+        transition: translate 0.6s ease-out;
+      }
+
+      .blob-1 {
+        width: 45vw;
+        height: 45vw;
+        top: -15%;
+        left: 10%;
+        background: rgba(160, 150, 255, 0.6);
+        /* animation: float-1 22s ease-in-out infinite alternate; */
+        animation: float-1 21s ease-in-out infinite alternate;
+      }
+
+      .blob-2 {
+        width: 40vw;
+        height: 40vw;
+        top: 20%;
+        right: -10%;
+        background: rgba(120, 190, 255, 0.5);
+        animation: float-2 26s ease-in-out infinite alternate;
+      }
+
+      .blob-3 {
+        width: 35vw;
+        height: 35vw;
+        bottom: -15%;
+        left: 30%;
+        background: rgba(200, 140, 255, 0.45);
+        animation: float-3 34s ease-in-out infinite alternate;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .blob {
+          opacity: 0.3;
+        }
+      }
+
+      @keyframes float-1 {
+        from {
+          transform: translate(0, 0) scale(1);
+        }
+        to {
+          transform: translate(12vw, 10vh) scale(1.15);
+        }
+      }
+
+      @keyframes float-2 {
+        from {
+          transform: translate(0, 0) scale(1.1);
+        }
+        to {
+          transform: translate(-14vw, 8vh) scale(0.9);
+        }
+      }
+
+      @keyframes float-3 {
+        from {
+          transform: translate(0, 0) scale(1);
+        }
+        to {
+          transform: translate(-10vw, -12vh) scale(1.2);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .blob {
+          animation: none;
+        }
+      }
+
+      /* ---------- Header ---------- */
       #header-nav {
         animation: blur linear both 0.5s;
         animation-timeline: scroll();
@@ -112,5 +204,25 @@ const { description, title } = Astro.props;
         }
       }
     </style>
+
+    <!-- Parallax opcional con el mouse -->
+    <script>
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+      if (!reduceMotion) {
+        window.addEventListener('mousemove', (e) => {
+          const blobs = document.querySelectorAll<HTMLElement>('.blob');
+          const x = (e.clientX / window.innerWidth - 0.5) * 2;
+          const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+          blobs.forEach((blob, i) => {
+            const depth = (i + 1) * 15;
+            blob.style.translate = `${x * depth}px ${y * depth}px`;
+          });
+        });
+      }
+    </script>
   </body>
 </html>
